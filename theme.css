@@ -1,4 +1,5 @@
 body {
+	/* Reset all border radius for Kindle-like sharp edges */
 	--radius-s: 0px;
 	--radius-m: 0px;
 	--radius-l: 0px;
@@ -8,6 +9,61 @@ body {
 	--toggle-radius: 0px;
 	--toggle-thumb-radius: 0px;
 	--slider-thumb-radius: 0px;
+
+	/* Kindle-like typography */
+	--font-text-theme: "Bookerly", "Crimson Pro", "Crimson Text", Georgia, serif;
+	--font-size-base: 20px;
+	--line-height-base: 1.618; /* Golden ratio for optimal readability */
+	--paragraph-spacing: 1.8em;
+	--letter-spacing-base: 0.01em;
+	--word-spacing: 0.05em;
+	
+	/* Reading width - similar to Kindle's comfortable reading width */
+	--max-width: 38em; /* Closer to Kindle's actual reading width */
+	--content-padding: 2.5em;
+	--page-margin: 3em;
+	
+	/* Common styles for both themes */
+	--text-selection: rgba(147, 147, 147, 0.15);
+	--interactive-accent: #947461; /* More Kindle-like sepia tone */
+	--interactive-accent-hover: #826754;
+
+	/* Sidebar and UI sizing */
+	--sidebar-width: 280px;
+	--header-height: 42px;
+	--status-bar-height: 24px;
+	--menu-item-padding: 8px 16px;
+	--divider-width: 1px;
+
+	/* Graph colors */
+	--graph-bg: var(--background-primary);
+	--graph-text: var(--text-normal);
+	--graph-line: rgba(150, 140, 130, 0.2);
+	--graph-node: var(--text-muted);
+	--graph-node-unresolved: var(--text-faint);
+	--graph-node-focused: var(--interactive-accent);
+	--graph-node-tag: #B38A6C;
+	--graph-node-attachment: #8C7B6B;
+	--graph-controls-width: 260px;
+	
+	/* Graph node sizes */
+	--graph-node-size: 5px;
+	--graph-node-focused-size: 7px;
+	--graph-line-width: 1px;
+	
+	/* Expanded Graph group colors - Kindle-inspired palette */
+	--graph-color-1: #947461;  /* Sepia brown */
+	--graph-color-2: #A89078;  /* Warm tan */
+	--graph-color-3: #C1A98E;  /* Light sepia */
+	--graph-color-4: #8C7B6B;  /* Muted brown */
+	--graph-color-5: #B38A6C;  /* Amber */
+	--graph-color-6: #7D6B5D;  /* Dark sepia */
+	--graph-color-7: #AA9683;  /* Dusty rose */
+	--graph-color-8: #9F8574;  /* Taupe */
+	--graph-color-9: #C4B19A;  /* Parchment */
+	--graph-color-10: #6D5D4F; /* Coffee */
+	--graph-color-11: #B9A89A; /* Warm gray */
+	--graph-color-12: #857266; /* Umber */
 }
 
 .workspace-tab-header.is-active::before, .workspace-tab-header.is-active::after {
@@ -32,3 +88,1939 @@ svg * {
 .menu-separator {
 	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
 }
+
+/* Dark theme - mimicking Kindle's night mode */
+.theme-dark {
+	--background-primary: #121212; /* True Kindle night mode color */
+	--background-secondary: #1A1A1A;
+	--background-secondary-alt: #1F1F1F;
+	--background-tertiary: #242424;
+	--background-modifier-border: #2F2F2F;
+	
+	--text-normal: #D4D4D4;
+	--text-muted: #8C8C8C;
+	--text-faint: #666666;
+	
+	/* Subtle gradient for better eye comfort */
+	background-image: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.02),
+		rgba(0, 0, 0, 0) 150px,
+		rgba(0, 0, 0, 0) calc(100% - 150px),
+		rgba(0, 0, 0, 0.02)
+	);
+}
+
+/* Light theme - mimicking Kindle's paper-like display */
+.theme-light {
+	--background-primary: #F8F5ED; /* Warmer, more paper-like */
+	--background-secondary: #F2EFE6;
+	--background-secondary-alt: #EBE8DF;
+	--background-tertiary: #E5E2D7;
+	--background-modifier-border: #DBD8CF;
+	
+	--text-normal: #2A2724; /* Slightly warmer black */
+	--text-muted: #73706C;
+	--text-faint: #A3A09B;
+	--text-on-accent: #FFFFFF;
+	
+	--interactive-normal: #E3E0D5;
+	--interactive-hover: #D8D5CA;
+	--interactive-success: #9BB99B;
+	
+	--scrollbar-bg: var(--background-secondary);
+	--scrollbar-thumb-bg: var(--text-muted);
+
+	--divider-color: #D8D5CA;
+	--border-color: #D8D5CA;
+
+	/* Paper-like texture */
+	background-image: 
+		linear-gradient(
+			to right,
+			rgba(222, 219, 211, 0.06) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			to bottom,
+			rgba(222, 219, 211, 0.06) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			to right,
+			rgba(227, 224, 216, 0.08),
+			rgba(227, 224, 216, 0) 150px,
+			rgba(227, 224, 216, 0) calc(100% - 150px),
+			rgba(227, 224, 216, 0.08)
+		);
+	background-size: 20px 20px, 20px 20px, 100% 100%;
+}
+
+:root {
+	--input-focus-border-color: Highlight;
+	--input-focus-outline: 1px solid Canvas;
+	--input-unfocused-border-color: transparent;
+	--input-disabled-border-color: transparent;
+	--input-hover-border-color: black;
+	/* Default Input Variables for Root */
+}
+
+/* Content width and margins - Kindle-like reading experience */
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: var(--content-padding);
+	padding-bottom: 40vh; /* Space for continuous scrolling */
+}
+
+/* Typography enhancements for Kindle-like reading */
+.markdown-preview-view {
+	font-family: var(--font-text-theme);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-base);
+	letter-spacing: var(--letter-spacing-base);
+	word-spacing: var(--word-spacing);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: "liga" 1, "kern" 1; /* Enable ligatures and kerning */
+}
+
+/* Paragraphs with proper text justification and hyphenation */
+.markdown-preview-view p {
+	margin-bottom: var(--paragraph-spacing);
+	text-align: justify;
+	hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hanging-punctuation: first; /* Optical margin alignment */
+}
+
+/* First paragraph after headers - Kindle-like indentation */
+.markdown-preview-view h1 + p,
+.markdown-preview-view h2 + p,
+.markdown-preview-view h3 + p,
+.markdown-preview-view h4 + p,
+.markdown-preview-view h5 + p,
+.markdown-preview-view h6 + p {
+	text-indent: 0;
+	font-size: 1.05em; /* Slightly larger first paragraph */
+}
+
+/* Subsequent paragraphs */
+.markdown-preview-view p + p {
+	text-indent: 1.5em;
+	margin-top: -0.75em; /* Tighter paragraph spacing */
+}
+
+/* Headers with Kindle-like spacing and styling */
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+	font-family: var(--font-text-theme);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin-top: 2.5em;
+	margin-bottom: 1em;
+	color: var(--text-normal);
+	line-height: 1.3;
+}
+
+.markdown-preview-view h1 { font-size: 2em; text-align: center; margin-top: 3em; margin-bottom: 2em; page-break-before: always; }
+.markdown-preview-view h2 { font-size: 1.75em; }
+.markdown-preview-view h3 { font-size: 1.5em; }
+.markdown-preview-view h4 { font-size: 1.25em; }
+.markdown-preview-view h5 { font-size: 1.1em; }
+.markdown-preview-view h6 { font-size: 1em; }
+
+/* Chapter number styling */
+.markdown-preview-view h1::before {
+	content: attr(data-heading);
+	display: block;
+	font-size: 0.5em;
+	margin-bottom: 1em;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-weight: normal;
+}
+
+/* Enhanced Kindle-like drop caps for paragraphs after headings */
+.markdown-preview-view h1 + p::first-letter,
+.markdown-preview-view h2 + p::first-letter,
+.markdown-preview-view h3 + p::first-letter,
+.markdown-preview-view h4 + p::first-letter,
+.markdown-preview-view h5 + p::first-letter,
+.markdown-preview-view h6 + p::first-letter {
+	float: left;
+	font-size: 3.5em;
+	line-height: 0.8;
+	padding-right: 0.1em;
+	padding-top: 0.1em;
+	padding-bottom: 0.1em;
+	margin-right: 0.05em;
+	font-family: var(--font-text-theme);
+	font-weight: normal;
+	color: var(--interactive-accent);
+}
+
+/* Adjust size based on heading level for more balanced appearance */
+.markdown-preview-view h1 + p::first-letter {
+	font-size: 4em;
+}
+
+.markdown-preview-view h2 + p::first-letter {
+	font-size: 3.5em;
+}
+
+.markdown-preview-view h3 + p::first-letter,
+.markdown-preview-view h4 + p::first-letter {
+	font-size: 3em;
+}
+
+.markdown-preview-view h5 + p::first-letter,
+.markdown-preview-view h6 + p::first-letter {
+	font-size: 2.5em;
+}
+
+/* Ensure drop caps work properly in Reading view */
+.is-reading-view .markdown-preview-view h1 + p::first-letter,
+.is-reading-view .markdown-preview-view h2 + p::first-letter,
+.is-reading-view .markdown-preview-view h3 + p::first-letter,
+.is-reading-view .markdown-preview-view h4 + p::first-letter,
+.is-reading-view .markdown-preview-view h5 + p::first-letter,
+.is-reading-view .markdown-preview-view h6 + p::first-letter {
+	margin-top: 0.1em;
+}
+
+/* Fix for Live Preview mode */
+.HyperMD-header + .HyperMD-paragraph .cm-line::first-letter {
+	font-size: 2.5em;
+	float: left;
+	line-height: 0.8;
+	padding-right: 0.1em;
+	padding-top: 0.1em;
+	margin-right: 0.05em;
+	color: var(--interactive-accent);
+}
+
+/* Blockquotes with Kindle-like styling */
+.markdown-preview-view blockquote {
+	border-left: none;
+	margin: 2em 2em;
+	padding: 0.75em 1.5em;
+	font-style: italic;
+	color: var(--text-muted);
+	background-color: transparent;
+	position: relative;
+}
+
+.markdown-preview-view blockquote::before,
+.markdown-preview-view blockquote::after {
+	content: "";
+	position: absolute;
+	width: 3em;
+	height: 2px;
+	background-color: var(--text-faint);
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.markdown-preview-view blockquote::before {
+	top: -0.5em;
+}
+
+.markdown-preview-view blockquote::after {
+	bottom: -0.5em;
+}
+
+/* Lists with improved readability */
+.markdown-preview-view ul,
+.markdown-preview-view ol {
+	padding-left: 1.5em;
+	margin: 1.5em 0;
+	line-height: 1.7;
+}
+
+.markdown-preview-view li {
+	margin-bottom: 0.75em;
+}
+
+/* Links with subtle styling */
+.markdown-preview-view a {
+	color: var(--text-normal);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+	transition: all 0.2s ease;
+}
+
+.markdown-preview-view a:hover {
+	color: var(--interactive-accent);
+	text-decoration-thickness: 2px;
+}
+
+/* Footnotes */
+.markdown-preview-view .footnotes {
+	margin-top: 4em;
+	padding-top: 2em;
+	border-top: 1px solid var(--border-color);
+	font-size: 0.9em;
+	color: var(--text-muted);
+}
+
+.markdown-preview-view .footnotes ol {
+	margin-left: 1em;
+}
+
+.markdown-preview-view .footnote-ref {
+	font-size: 0.7em;
+	vertical-align: super;
+	line-height: 0;
+	margin: 0 2px;
+	color: var(--text-muted);
+	text-decoration: none;
+}
+
+/* Code blocks with improved contrast */
+.markdown-preview-view code {
+	font-family: "Courier Prime", monospace;
+	font-size: 0.9em;
+	background-color: var(--background-secondary);
+	padding: 0.2em 0.4em;
+	border-radius: 2px;
+}
+
+.markdown-preview-view pre {
+	background-color: var(--background-secondary);
+	padding: 1.5em;
+	margin: 1.5em 0;
+	overflow-x: auto;
+	border: 1px solid var(--border-color);
+}
+
+/* Tables with Kindle-like styling */
+.markdown-preview-view table {
+	border-collapse: collapse;
+	margin: 2em 0;
+	width: 100%;
+	font-size: 0.95em;
+	background-color: var(--background-secondary);
+}
+
+.markdown-preview-view th,
+.markdown-preview-view td {
+	border: 1px solid var(--border-color);
+	padding: 0.75em 1em;
+}
+
+.markdown-preview-view th {
+	background-color: var(--background-secondary-alt);
+	font-weight: 600;
+	text-align: left;
+}
+
+/* Horizontal rule */
+.markdown-preview-view hr {
+	border: none;
+	border-top: 1px solid var(--border-color);
+	margin: 3em 0;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Selection styling */
+::selection {
+	background-color: var(--text-selection);
+}
+
+/* Progress bar - similar to Kindle's reading progress */
+.status-bar {
+	background-color: var(--background-secondary);
+	border-top: var(--divider-width) solid var(--border-color);
+	height: var(--status-bar-height);
+	padding: 0 16px;
+	color: var(--text-muted);
+	font-size: 0.8em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* Reading time estimate */
+.status-bar::after {
+	content: attr(data-reading-time);
+	font-size: 0.9em;
+	color: var(--text-muted);
+}
+
+/* Sidebar navigation */
+.nav-folder-title,
+.nav-file-title {
+	font-size: 0.9em;
+	padding: 4px 12px;
+}
+
+/* Editor mode enhancements */
+.cm-s-obsidian {
+	font-family: var(--font-text-theme);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-base);
+	letter-spacing: var(--letter-spacing-base);
+	word-spacing: var(--word-spacing);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb-bg);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--text-muted);
+}
+
+/* Kindle Theme for Obsidian */
+
+/* Sidebar */
+.workspace-drawer {
+	border-color: var(--divider-color);
+}
+
+.workspace-drawer.mod-left {
+	border-right: var(--divider-width) solid var(--divider-color);
+}
+
+.workspace-drawer.mod-right {
+	border-left: var(--divider-width) solid var(--divider-color);
+}
+
+/* Navigation */
+.nav-folder-title,
+.nav-file-title {
+	padding: var(--menu-item-padding);
+	border: none;
+	color: var(--text-normal);
+}
+
+.nav-folder-title:hover,
+.nav-file-title:hover {
+	background-color: var(--interactive-hover);
+}
+
+/* Tabs */
+.workspace-tab-header {
+	padding: 4px 12px;
+	border-bottom: 2px solid transparent;
+	color: var(--text-muted);
+}
+
+.workspace-tab-header.is-active {
+	border-bottom-color: var(--interactive-accent);
+	color: var(--text-normal);
+	background-color: transparent;
+}
+
+/* Search */
+.search-input-container {
+	padding: 8px;
+}
+
+.search-input {
+	background-color: var(--background-secondary);
+	border: var(--divider-width) solid var(--border-color);
+}
+
+/* Settings */
+.setting-item {
+	padding: 16px;
+	border-bottom: var(--divider-width) solid var(--divider-color);
+}
+
+.setting-item-name {
+	color: var(--text-normal);
+	font-weight: 600;
+}
+
+.setting-item-description {
+	color: var(--text-muted);
+}
+
+/* Buttons */
+button {
+	background-color: var(--interactive-normal);
+	border: var(--divider-width) solid var(--border-color);
+	color: var(--text-normal);
+	padding: 6px 12px;
+}
+
+button:hover {
+	background-color: var(--interactive-hover);
+}
+
+/* Menus */
+.menu {
+	background-color: var(--background-secondary);
+	border: var(--divider-width) solid var(--border-color);
+	padding: 4px;
+}
+
+.menu-item {
+	padding: var(--menu-item-padding);
+	color: var(--text-normal);
+}
+
+.menu-item:hover {
+	background-color: var(--interactive-hover);
+}
+
+/* Status bar */
+.status-bar {
+	background-color: var(--background-secondary);
+	border-top: var(--divider-width) solid var(--border-color);
+	height: var(--status-bar-height);
+	padding: 0 8px;
+	color: var(--text-muted);
+}
+
+/* Modals */
+.modal {
+	background-color: var(--background-primary);
+	border: var(--divider-width) solid var(--border-color);
+}
+
+.modal-title {
+	padding: 16px;
+	border-bottom: var(--divider-width) solid var(--divider-color);
+}
+
+.modal-content {
+	padding: 16px;
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+	border: var(--divider-width) solid var(--border-color);
+	background-color: var(--background-secondary);
+}
+
+input[type="checkbox"]:checked {
+	background-color: var(--interactive-accent);
+	border-color: var(--interactive-accent);
+}
+
+/* Media Elements */
+.markdown-preview-view img,
+.markdown-preview-view video {
+    border-radius: 8px;
+    border: var(--divider-width) solid var(--border-color);
+    max-width: 100%;
+    height: auto;
+    margin: 1.5em auto;
+    display: block;
+    object-fit: cover;
+    background-color: var(--background-secondary);
+}
+
+/* External images (like YouTube thumbnails) */
+.markdown-preview-view img[src*="i.ytimg.com"],
+.markdown-preview-view img[referrerpolicy="no-referrer"] {
+    aspect-ratio: 16/9;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Image hover effects with smoother transition */
+.markdown-preview-view img {
+    transition: all 0.3s ease-in-out;
+}
+
+.markdown-preview-view img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Image container for better centering and spacing */
+.markdown-preview-view p:has(> img) {
+    text-align: center;
+    margin: 2em 0;
+}
+
+/* Image captions */
+.markdown-preview-view .image-embed {
+    position: relative;
+    margin: 2em 0;
+}
+
+.markdown-preview-view .image-embed figcaption {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 1em;
+    font-style: italic;
+}
+
+/* Media containers with improved spacing */
+.markdown-preview-view .image-embed,
+.markdown-preview-view .media-embed {
+    display: block;
+    text-align: center;
+    margin: 2em 0;
+    max-width: 100%;
+}
+
+/* Large images (like thumbnails) container */
+.markdown-preview-view .image-embed:has(img[src*="i.ytimg.com"]),
+.markdown-preview-view .image-embed:has(img[referrerpolicy="no-referrer"]) {
+    max-width: 100%;
+    margin: 2.5em 0;
+}
+
+/* Dark theme specific image adjustments */
+.theme-dark .markdown-preview-view img {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.theme-dark .markdown-preview-view img:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Light theme specific image adjustments */
+.theme-light .markdown-preview-view img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.theme-light .markdown-preview-view img:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Embedded iframes (like video players) */
+.markdown-preview-view iframe {
+    border-radius: 8px;
+    border: var(--divider-width) solid var(--border-color);
+    margin: 1em 0;
+}
+
+/* Audio player */
+.markdown-preview-view audio {
+    width: 100%;
+    border-radius: 4px;
+    margin: 1em 0;
+}
+
+/* PDF embeds */
+.markdown-preview-view .pdf-embed {
+    border-radius: 8px;
+    border: var(--divider-width) solid var(--border-color);
+    margin: 1em 0;
+}
+
+img {
+    border: 5px solid;
+    border-radius: 4px;
+}
+
+/* Enhanced Graph View - Kindle Style */
+
+/* Graph background */
+.graph-view-container {
+    background-color: var(--graph-bg);
+    border: var(--divider-width) solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+/* Graph nodes */
+.graph-view.color-fill {
+    color: var(--graph-node);
+}
+
+.graph-view.color-fill-unresolved {
+    color: var(--graph-node-unresolved);
+}
+
+.graph-view.color-fill-focused {
+    color: var(--graph-node-focused);
+}
+
+.graph-view.color-fill-tag {
+    color: var(--graph-node-tag);
+}
+
+.graph-view.color-fill-attachment {
+    color: var(--graph-node-attachment);
+}
+
+/* Group colors */
+.graph-view.color-fill-1 {
+    color: var(--graph-color-1);
+}
+
+.graph-view.color-fill-2 {
+    color: var(--graph-color-2);
+}
+
+.graph-view.color-fill-3 {
+    color: var(--graph-color-3);
+}
+
+.graph-view.color-fill-4 {
+    color: var(--graph-color-4);
+}
+
+.graph-view.color-fill-5 {
+    color: var(--graph-color-5);
+}
+
+.graph-view.color-fill-6 {
+    color: var(--graph-color-6);
+}
+
+/* Graph lines */
+.graph-view.color-line {
+    color: var(--graph-line);
+}
+
+.graph-view.color-arrow {
+    color: var(--graph-line);
+}
+
+/* Highlight colors */
+.graph-view.color-fill-highlight {
+    color: var(--interactive-accent);
+}
+
+.graph-view.color-line-highlight {
+    color: var(--interactive-accent);
+}
+
+.graph-view.color-text {
+    color: var(--graph-text);
+    font-family: var(--font-text-theme);
+    font-size: 12px;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.graph-view.color-circle {
+    color: var(--graph-node-focused);
+}
+
+/* Graph controls panel */
+.graph-controls {
+    background-color: var(--background-secondary);
+    border-right: var(--divider-width) solid var(--border-color);
+    width: var(--graph-controls-width);
+    padding: 16px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.graph-controls.is-close {
+    border-right: none;
+    box-shadow: none;
+}
+
+/* Graph control sections */
+.graph-control-section {
+    border-bottom: var(--divider-width) solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.graph-control-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.graph-control-section-header {
+    font-family: var(--font-text-theme);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-normal);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+
+/* Graph control items */
+.graph-controls .setting-item {
+    padding: 8px 0;
+    border: none;
+    margin-bottom: 4px;
+}
+
+.graph-controls .setting-item-name {
+    font-family: var(--font-text-theme);
+    font-size: 13px;
+    color: var(--text-normal);
+    font-weight: 500;
+}
+
+.graph-controls .setting-item-description {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-top: 2px;
+}
+
+/* Graph control buttons */
+.graph-controls-button {
+    background-color: var(--background-secondary-alt);
+    color: var(--text-normal);
+    border: var(--divider-width) solid var(--border-color);
+    padding: 6px 10px;
+    font-family: var(--font-text-theme);
+    font-size: 12px;
+    transition: all 0.2s ease;
+    border-radius: 0;
+}
+
+.graph-controls-button:hover {
+    background-color: var(--interactive-hover);
+    color: var(--text-on-accent);
+}
+
+.graph-controls-button.mod-reset {
+    border-color: var(--interactive-accent);
+    color: var(--interactive-accent);
+}
+
+.graph-controls-button.mod-reset:hover {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+}
+
+/* Graph color groups */
+.graph-color-group {
+    background-color: var(--background-secondary-alt);
+    border: var(--divider-width) solid var(--border-color);
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+
+.graph-color-group:hover {
+    border-color: var(--interactive-accent);
+}
+
+.graph-color-group input[type="color"] {
+    border: var(--divider-width) solid var(--border-color);
+    height: 22px;
+    width: 44px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.graph-color-group input[type="color"]:hover {
+    border-color: var(--interactive-accent);
+}
+
+.graph-color-group input[type="text"] {
+    background-color: var(--background-secondary);
+    border: var(--divider-width) solid var(--border-color);
+    color: var(--text-normal);
+    font-family: var(--font-text-theme);
+    font-size: 12px;
+    padding: 6px 10px;
+    transition: all 0.2s ease;
+}
+
+.graph-color-group input[type="text"]:focus {
+    border-color: var(--interactive-accent);
+    outline: none;
+}
+
+/* Graph sliders */
+.graph-controls input[type="range"] {
+    background-color: var(--background-secondary-alt);
+    height: 4px;
+    transition: all 0.2s ease;
+}
+
+.graph-controls input[type="range"]::-webkit-slider-thumb {
+    background-color: var(--interactive-accent);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.graph-controls input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: var(--interactive-accent-hover);
+    transform: scale(1.1);
+}
+
+/* Light theme specific graph adjustments */
+.theme-light .graph-view-container {
+    background-image: 
+        linear-gradient(
+            to right,
+            rgba(222, 219, 211, 0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(222, 219, 211, 0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to right,
+            rgba(227, 224, 216, 0.06),
+            rgba(227, 224, 216, 0) 150px,
+            rgba(227, 224, 216, 0) calc(100% - 150px),
+            rgba(227, 224, 216, 0.06)
+        );
+    background-size: 20px 20px, 20px 20px, 100% 100%;
+}
+
+/* Dark theme specific graph adjustments */
+.theme-dark .graph-view-container {
+    background-color: var(--background-primary);
+    background-image: 
+        linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0) 150px,
+            rgba(0, 0, 0, 0) calc(100% - 150px),
+            rgba(0, 0, 0, 0.1)
+        );
+}
+
+/* Dark theme color adjustments */
+.theme-dark {
+    --graph-color-1: #A68B76;  /* Lighter sepia brown */
+    --graph-color-2: #B89F88;  /* Lighter warm tan */
+    --graph-color-3: #D1B99E;  /* Lighter light sepia */
+    --graph-color-4: #9C8B7B;  /* Lighter muted brown */
+    --graph-color-5: #C39A7C;  /* Lighter amber */
+    --graph-color-6: #8D7B6D;  /* Lighter dark sepia */
+    --graph-color-7: #BAA693;  /* Lighter dusty rose */
+    --graph-color-8: #AF9584;  /* Lighter taupe */
+    --graph-color-9: #D4C1AA;  /* Lighter parchment */
+    --graph-color-10: #7D6D5F; /* Lighter coffee */
+    --graph-color-11: #C9B8AA; /* Lighter warm gray */
+    --graph-color-12: #957C6C; /* Lighter umber */
+}
+
+/* Animation for graph nodes on hover */
+.graph-view-container:hover .graph-view.color-fill,
+.graph-view-container:hover .graph-view.color-fill-1,
+.graph-view-container:hover .graph-view.color-fill-2,
+.graph-view-container:hover .graph-view.color-fill-3,
+.graph-view-container:hover .graph-view.color-fill-4,
+.graph-view-container:hover .graph-view.color-fill-5,
+.graph-view-container:hover .graph-view.color-fill-6,
+.graph-view-container:hover .graph-view.color-fill-7,
+.graph-view-container:hover .graph-view.color-fill-8,
+.graph-view-container:hover .graph-view.color-fill-9,
+.graph-view-container:hover .graph-view.color-fill-10,
+.graph-view-container:hover .graph-view.color-fill-11,
+.graph-view-container:hover .graph-view.color-fill-12 {
+    transition: color 0.3s ease;
+}
+
+/* Zoom controls */
+.workspace-leaf-content[data-type="graph"] .view-action {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.workspace-leaf-content[data-type="graph"] .view-action:hover {
+    color: var(--text-normal);
+}
+
+/* Empty graph state */
+.graph-view-placeholder {
+    font-family: var(--font-text-theme);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Additional group colors */
+.graph-view.color-fill-7 {
+    color: var(--graph-color-7);
+}
+
+.graph-view.color-fill-8 {
+    color: var(--graph-color-8);
+}
+
+.graph-view.color-fill-9 {
+    color: var(--graph-color-9);
+}
+
+.graph-view.color-fill-10 {
+    color: var(--graph-color-10);
+}
+
+.graph-view.color-fill-11 {
+    color: var(--graph-color-11);
+}
+
+.graph-view.color-fill-12 {
+    color: var(--graph-color-12);
+}
+
+/* Color palette display in graph controls */
+.graph-controls .color-palette-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 8px 0;
+}
+
+.graph-controls .color-palette-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.graph-controls .color-palette-swatch:hover {
+    transform: scale(1.2);
+}
+
+/* Color swatches for each color */
+.graph-controls .color-swatch-1 { background-color: var(--graph-color-1); }
+.graph-controls .color-swatch-2 { background-color: var(--graph-color-2); }
+.graph-controls .color-swatch-3 { background-color: var(--graph-color-3); }
+.graph-controls .color-swatch-4 { background-color: var(--graph-color-4); }
+.graph-controls .color-swatch-5 { background-color: var(--graph-color-5); }
+.graph-controls .color-swatch-6 { background-color: var(--graph-color-6); }
+.graph-controls .color-swatch-7 { background-color: var(--graph-color-7); }
+.graph-controls .color-swatch-8 { background-color: var(--graph-color-8); }
+.graph-controls .color-swatch-9 { background-color: var(--graph-color-9); }
+.graph-controls .color-swatch-10 { background-color: var(--graph-color-10); }
+.graph-controls .color-swatch-11 { background-color: var(--graph-color-11); }
+.graph-controls .color-swatch-12 { background-color: var(--graph-color-12); }
+
+/* ===== CODE BLOCKS AND SYNTAX HIGHLIGHTING ===== */
+
+/* Enhanced code block styling - removing borders for cleaner look */
+.markdown-preview-view pre {
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    line-height: 1.5;
+    padding: 1.8em 2em;
+    margin: 2em 0;
+    border-radius: 0; /* Removed border radius for Kindle-like appearance */
+    box-shadow: none; /* Removed shadow */
+    position: relative;
+    overflow-x: auto;
+    background-color: var(--background-secondary);
+    /* Subtle paper texture for code blocks */
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.01) 1px,
+        transparent 1px
+    );
+    background-size: 20px 100%;
+}
+
+/* Replace "Code" label with a more subtle indicator */
+.markdown-preview-view pre::before {
+    content: ""; /* Removed text label */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--text-faint);
+    opacity: 0.2;
+}
+
+/* Inline code styling - more minimal */
+.markdown-preview-view code:not(pre code) {
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    font-size: 0.9em;
+    background-color: var(--background-secondary);
+    padding: 0.2em 0.4em;
+    border-radius: 0; /* Removed border radius */
+    border: none; /* Removed border */
+    box-shadow: 0 0 0 1px var(--background-modifier-border); /* Subtle outline instead of border */
+}
+
+/* Code block line numbers - more subtle */
+.markdown-preview-view pre.has-line-numbers .code-block-flair {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 1.8em 0.6em;
+    color: var(--text-faint);
+    background: transparent; /* Removed background */
+    border-right: none; /* Removed border */
+    font-size: 0.8em;
+    text-align: right;
+    min-width: 2.5em;
+    opacity: 0.6; /* More subtle appearance */
+}
+
+/* Code block with line numbers - adjust padding */
+.markdown-preview-view pre.has-line-numbers {
+    padding-left: 4.5em;
+}
+
+/* Code block language tag - more subtle */
+.markdown-preview-view pre .code-block-language {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em; /* Moved to right side */
+    color: var(--text-faint);
+    background: transparent; /* Removed background */
+    padding: 0.2em 0.6em;
+    font-size: 0.7em;
+    border-radius: 0;
+    font-family: var(--font-text-theme);
+    font-style: italic;
+    opacity: 0.7; /* More subtle appearance */
+}
+
+/* Copy button styling - more minimal */
+.markdown-preview-view pre .copy-code-button {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    color: var(--text-faint);
+    background: transparent; /* Removed background */
+    border: none; /* Removed border */
+    border-radius: 0;
+    padding: 0.2em 0.4em;
+    font-size: 0.7em;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.markdown-preview-view pre:hover .copy-code-button {
+    opacity: 0.7; /* More subtle appearance */
+}
+
+/* ===== SYNTAX HIGHLIGHTING - KINDLE-LIKE MUTED COLORS ===== */
+
+/* Light theme syntax highlighting - slightly adjusted for better readability */
+.theme-light {
+    --code-keyword: #7E602C;     /* Muted brown for keywords */
+    --code-function: #5B4B3C;    /* Darker brown for functions - improved contrast */
+    --code-string: #5C7F3F;      /* Muted green for strings */
+    --code-number: #6B4C5C;      /* Muted purple for numbers */
+    --code-comment: #8C8C8C;     /* Gray for comments */
+    --code-property: #4C5F6B;    /* Muted blue for properties */
+    --code-tag: #6B4C4C;         /* Muted red for tags */
+    --code-constant: #4C6B5F;    /* Muted teal for constants */
+    --code-operator: #6B6B4C;    /* Muted olive for operators */
+    --code-class: #4C4C6B;       /* Muted navy for classes */
+}
+
+/* Dark theme syntax highlighting - slightly adjusted for better readability */
+.theme-dark {
+    --code-keyword: #B39D78;     /* Muted gold for keywords */
+    --code-function: #A8A8A8;    /* Light gray for functions - improved contrast */
+    --code-string: #9BB99B;      /* Muted green for strings */
+    --code-number: #B99BB9;      /* Muted lavender for numbers */
+    --code-comment: #707070;     /* Dark gray for comments */
+    --code-property: #9BB9B9;    /* Muted cyan for properties */
+    --code-tag: #B99B9B;         /* Muted pink for tags */
+    --code-constant: #9BB9B0;    /* Muted teal for constants */
+    --code-operator: #B9B99B;    /* Muted yellow for operators */
+    --code-class: #9B9BB9;       /* Muted purple for classes */
+}
+
+/* Apply syntax highlighting colors */
+.token.keyword { color: var(--code-keyword); }
+.token.function { color: var(--code-function); }
+.token.string { color: var(--code-string); }
+.token.number { color: var(--code-number); }
+.token.comment { color: var(--code-comment); font-style: italic; }
+.token.property { color: var(--code-property); }
+.token.tag { color: var(--code-tag); }
+.token.constant { color: var(--code-constant); }
+.token.operator { color: var(--code-operator); }
+.token.class-name { color: var(--code-class); }
+.token.boolean { color: var(--code-number); }
+.token.regex { color: var(--code-string); }
+.token.punctuation { color: var(--text-muted); }
+.token.selector { color: var(--code-tag); }
+.token.doctype { color: var(--code-comment); font-style: italic; }
+.token.namespace { opacity: 0.8; }
+.token.entity { color: var(--code-constant); }
+.token.url { color: var(--code-string); }
+.token.variable { color: var(--code-property); font-style: italic; }
+.token.atrule { color: var(--code-keyword); }
+.token.attr-name { color: var(--code-property); }
+.token.attr-value { color: var(--code-string); }
+.token.builtin { color: var(--code-function); }
+.token.cdata { color: var(--code-comment); }
+.token.char { color: var(--code-string); }
+.token.important { color: var(--code-keyword); font-weight: bold; }
+.token.inserted { color: var(--code-string); }
+.token.deleted { color: var(--code-tag); text-decoration: line-through; }
+
+/* Code block scrollbar styling - more minimal */
+.markdown-preview-view pre::-webkit-scrollbar {
+    height: 6px; /* Thinner scrollbar */
+}
+
+.markdown-preview-view pre::-webkit-scrollbar-track {
+    background: transparent; /* Transparent track */
+}
+
+.markdown-preview-view pre::-webkit-scrollbar-thumb {
+    background: var(--text-faint);
+    border-radius: 0; /* Removed border radius */
+    opacity: 0.3;
+}
+
+.markdown-preview-view pre::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Editor mode code block styling - more minimal */
+.cm-s-obsidian .HyperMD-codeblock {
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    line-height: 1.5;
+    padding: 0.5em 0;
+}
+
+/* Editor syntax highlighting */
+.cm-s-obsidian span.cm-keyword { color: var(--code-keyword); }
+.cm-s-obsidian span.cm-operator { color: var(--code-operator); }
+.cm-s-obsidian span.cm-string { color: var(--code-string); }
+.cm-s-obsidian span.cm-string-2 { color: var(--code-string); }
+.cm-s-obsidian span.cm-number { color: var(--code-number); }
+.cm-s-obsidian span.cm-def { color: var(--code-function); }
+.cm-s-obsidian span.cm-variable { color: var(--text-normal); }
+.cm-s-obsidian span.cm-variable-2 { color: var(--code-property); }
+.cm-s-obsidian span.cm-variable-3 { color: var(--code-constant); }
+.cm-s-obsidian span.cm-type { color: var(--code-class); }
+.cm-s-obsidian span.cm-property { color: var(--code-property); }
+.cm-s-obsidian span.cm-atom { color: var(--code-constant); }
+.cm-s-obsidian span.cm-tag { color: var(--code-tag); }
+.cm-s-obsidian span.cm-attribute { color: var(--code-property); }
+.cm-s-obsidian span.cm-qualifier { color: var(--code-keyword); }
+.cm-s-obsidian span.cm-comment { 
+    color: var(--code-comment); 
+    font-style: italic;
+}
+
+/* Fenced code block background in editor - more minimal */
+.cm-s-obsidian div.HyperMD-codeblock {
+    background-color: var(--background-secondary);
+    border: none; /* Removed border */
+    border-radius: 0; /* Removed border radius */
+    margin: 1em 0;
+    /* Subtle paper texture for code blocks */
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.01) 1px,
+        transparent 1px
+    );
+    background-size: 20px 100%;
+}
+
+/* Inline code in editor - more minimal */
+.cm-s-obsidian span.cm-inline-code {
+    color: var(--text-normal);
+    background-color: var(--background-secondary);
+    padding: 0.1em 0.2em;
+    border-radius: 0; /* Removed border radius */
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    font-size: 0.9em;
+    border: none; /* Removed border */
+    box-shadow: 0 0 0 1px var(--background-modifier-border); /* Subtle outline instead of border */
+}
+
+/* Fix for footnotes in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-link {
+    color: var(--code-string);
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    padding: 0;
+}
+
+/* Ensure code blocks with footnotes display correctly */
+.cm-s-obsidian .HyperMD-codeblock {
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    line-height: 1.5;
+    padding: 0.5em 0;
+    color: var(--text-normal);
+}
+
+/* Fix for active code blocks */
+.cm-s-obsidian .cm-active.HyperMD-codeblock {
+    background-color: var(--background-secondary);
+    border-radius: 0;
+}
+
+/* Ensure proper styling for footnote references in preview mode */
+.markdown-preview-view .footnote-ref {
+    color: var(--code-string);
+    text-decoration: none;
+    font-size: 0.8em;
+    vertical-align: super;
+    line-height: 0;
+    padding: 0 2px;
+}
+
+/* Improve footnote section styling */
+.markdown-preview-view .footnotes {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid var(--background-modifier-border);
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.markdown-preview-view .footnotes-list {
+    margin-left: 1em;
+}
+
+.markdown-preview-view .footnote-backref {
+    color: var(--code-string);
+    text-decoration: none;
+    font-family: var(--font-text-theme);
+}
+
+/* Fix for inline code with footnotes */
+.cm-s-obsidian span.cm-inline-code .cm-link,
+.markdown-preview-view code a {
+    color: var(--code-string);
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+/* Ensure proper styling for code blocks in editor */
+.cm-s-obsidian div.HyperMD-codeblock-begin,
+.cm-s-obsidian div.HyperMD-codeblock-end,
+.cm-s-obsidian div.HyperMD-codeblock {
+    background-color: var(--background-secondary);
+    border: none;
+    border-radius: 0;
+    /* Subtle paper texture for code blocks */
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.01) 1px,
+        transparent 1px
+    );
+    background-size: 20px 100%;
+}
+
+/* Fix for code block fences */
+.cm-s-obsidian span.cm-hmd-codeblock-begin,
+.cm-s-obsidian span.cm-hmd-codeblock-end {
+    color: var(--text-faint);
+}
+
+/* Fix for code block language identifier */
+.cm-s-obsidian span.cm-hmd-codeblock-lang {
+    color: var(--text-faint);
+}
+
+/* Fix for images in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-image-marker,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-image-alt-text,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-image-alt-text.cm-link,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-string.cm-url {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    padding: 0;
+}
+
+/* Image marker styling */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-image-marker {
+    color: var(--text-normal);
+}
+
+/* Image alt text styling */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-image-alt-text,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-image-alt-text.cm-link {
+    color: var(--code-tag);
+}
+
+/* Image URL styling */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-string.cm-url {
+    color: var(--code-string);
+}
+
+/* Fix for links in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-url,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-link,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-hmd-internal-link {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    text-decoration: none;
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    padding: 0;
+}
+
+/* URL styling in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-url {
+    color: var(--code-string);
+}
+
+/* Link text styling in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-link,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-hmd-internal-link {
+    color: var(--code-function);
+}
+
+/* Fix for HTML tags in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-tag {
+    color: var(--code-tag);
+    background-color: transparent;
+}
+
+/* Fix for HTML attributes in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-attribute {
+    color: var(--code-property);
+    background-color: transparent;
+}
+
+/* Fix for HTML strings in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-string {
+    color: var(--code-string);
+    background-color: transparent;
+}
+
+/* Ensure all code block content has consistent styling */
+.cm-s-obsidian .HyperMD-codeblock * {
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Fix for reference-style link definitions in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-link-reference-open,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-link-reference-close,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-link-reference-def,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-link-reference-def-target,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-link,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-link-string {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    padding: 0;
+}
+
+/* Reference brackets styling */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-link-reference-open,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-link-reference-close,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-link {
+    color: var(--text-muted);
+}
+
+/* Reference number styling */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-link-reference-def {
+    color: var(--code-number);
+}
+
+/* Reference colon styling */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-link-reference-def-target {
+    color: var(--code-operator);
+}
+
+/* Reference URL styling */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-link-string {
+    color: var(--code-string);
+}
+
+/* Fix for all types of formatting markers in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-code,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-code-block,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-quote,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-header,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-em,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-strong,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-strikethrough,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-highlight,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-list,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-list-ul,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-list-ol {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    padding: 0;
+    color: var(--text-muted);
+}
+
+/* Fix for task list checkboxes in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-formatting-task {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    padding: 0;
+    color: var(--text-muted);
+}
+
+/* Fix for table formatting in code blocks */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-table-header,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-table-row,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-table-separator,
+.cm-s-obsidian span.cm-hmd-codeblock.cm-table {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    padding: 0;
+    color: var(--text-normal);
+}
+
+/* Table separator styling */
+.cm-s-obsidian span.cm-hmd-codeblock.cm-table-separator {
+    color: var(--text-muted);
+}
+
+/* Styling for links with cm-underline class */
+.cm-underline,
+a.cm-underline,
+.cm-link a.cm-underline {
+    text-decoration: none;
+    color: var(--interactive-accent);
+    border-bottom: 1px solid rgba(147, 147, 147, 0.3);
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+    padding-bottom: 1px;
+    font-weight: normal;
+}
+
+.cm-underline:hover,
+a.cm-underline:hover,
+.cm-link a.cm-underline:hover {
+    color: var(--interactive-accent-hover);
+    border-bottom: 1px solid var(--interactive-accent);
+    text-decoration: none;
+}
+
+/* Fix for links in editor mode */
+.cm-s-obsidian span.cm-link {
+    color: var(--interactive-accent);
+    text-decoration: none;
+}
+
+.cm-s-obsidian span.cm-link:hover {
+    text-decoration: none;
+}
+
+/* Fix for links in Live Preview mode */
+.HyperMD-link .cm-link {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(147, 147, 147, 0.3);
+    padding-bottom: 1px;
+}
+
+.HyperMD-link .cm-link:hover {
+    border-bottom: 1px solid var(--interactive-accent);
+}
+
+/* Fix for links in Reading view */
+.markdown-preview-view a {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(147, 147, 147, 0.3);
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+    padding-bottom: 1px;
+}
+
+.markdown-preview-view a:hover {
+    border-bottom: 1px solid var(--interactive-accent);
+    text-decoration: none;
+}
+
+/* ===== ENHANCED LIST STYLING ===== */
+
+/* Unordered lists - more Kindle-like */
+.markdown-preview-view ul {
+    padding-left: 1.5em;
+    margin: 1.2em 0;
+}
+
+.markdown-preview-view ul li {
+    margin-bottom: 0.5em;
+    position: relative;
+    list-style: none;
+}
+
+.markdown-preview-view ul li::before {
+    content: "•";
+    position: absolute;
+    left: -1.2em;
+    color: var(--interactive-accent);
+    font-size: 0.9em;
+}
+
+/* Nested unordered lists */
+.markdown-preview-view ul ul {
+    margin: 0.5em 0 0.5em 0.5em;
+}
+
+.markdown-preview-view ul ul li::before {
+    content: "◦";
+    font-size: 0.85em;
+}
+
+.markdown-preview-view ul ul ul li::before {
+    content: "▪";
+    font-size: 0.8em;
+}
+
+/* Ordered lists - more Kindle-like */
+.markdown-preview-view ol {
+    padding-left: 1.8em;
+    margin: 1.2em 0;
+    counter-reset: item;
+}
+
+.markdown-preview-view ol li {
+    margin-bottom: 0.5em;
+    position: relative;
+    list-style: none;
+    counter-increment: item;
+}
+
+.markdown-preview-view ol li::before {
+    content: counter(item) ".";
+    position: absolute;
+    left: -1.8em;
+    width: 1.5em;
+    text-align: right;
+    color: var(--interactive-accent);
+    font-size: 0.9em;
+    font-family: var(--font-text-theme);
+}
+
+/* Nested ordered lists */
+.markdown-preview-view ol ol {
+    margin: 0.5em 0 0.5em 0.5em;
+    counter-reset: subitem;
+}
+
+.markdown-preview-view ol ol li {
+    counter-increment: subitem;
+}
+
+.markdown-preview-view ol ol li::before {
+    content: counter(subitem, lower-alpha) ".";
+}
+
+/* Mixed nesting */
+.markdown-preview-view ul ol,
+.markdown-preview-view ol ul {
+    margin: 0.5em 0 0.5em 0.5em;
+}
+
+/* ===== TASK LISTS / CHECKBOXES ===== */
+
+/* Task list container */
+.markdown-preview-view ul.contains-task-list {
+    padding-left: 0;
+}
+
+/* Task list items */
+.markdown-preview-view ul.contains-task-list li {
+    margin-bottom: 0.5em;
+    list-style: none;
+    padding-left: 2em;
+    position: relative;
+}
+
+.markdown-preview-view ul.contains-task-list li::before {
+    content: none;
+}
+
+/* Checkbox styling */
+.markdown-preview-view .task-list-item-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid var(--text-muted);
+    border-radius: 0; /* Square checkboxes for Kindle-like appearance */
+    background-color: transparent;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Checked checkbox */
+.markdown-preview-view .task-list-item-checkbox:checked {
+    background-color: var(--interactive-accent);
+    border-color: var(--interactive-accent);
+}
+
+.markdown-preview-view .task-list-item-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: -0.15em;
+    left: 0.15em;
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+/* Completed task text */
+.markdown-preview-view ul.contains-task-list li.is-checked {
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+/* Live Preview mode checkboxes */
+.HyperMD-task-line .task-list-item-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid var(--text-muted);
+    border-radius: 0;
+    background-color: transparent;
+    margin-right: 0.5em;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.HyperMD-task-line .task-list-item-checkbox:checked {
+    background-color: var(--interactive-accent);
+    border-color: var(--interactive-accent);
+}
+
+.HyperMD-task-line .task-list-item-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: -0.15em;
+    left: 0.15em;
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.HyperMD-task-line[data-task="x"] {
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+/* ===== TEXT FORMATTING ===== */
+
+/* Strikethrough */
+.markdown-preview-view del,
+.cm-strikethrough {
+    text-decoration: none;
+    position: relative;
+    color: var(--text-muted);
+}
+
+.markdown-preview-view del::after,
+.cm-strikethrough::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background-color: var(--text-muted);
+}
+
+/* Highlighting */
+.markdown-preview-view mark,
+.cm-highlight {
+    background-color: rgba(255, 212, 0, 0.15);
+    padding: 0 0.2em;
+    border-radius: 0;
+}
+
+/* Bold */
+.markdown-preview-view strong,
+.cm-strong {
+    font-weight: 600;
+    color: var(--text-normal);
+}
+
+/* Italic */
+.markdown-preview-view em,
+.cm-em {
+    font-style: italic;
+    color: var(--text-normal);
+}
+
+/* Inline code */
+.markdown-preview-view code,
+.cm-inline-code {
+    font-family: "Courier Prime", "Source Code Pro", monospace;
+    font-size: 0.9em;
+    background-color: var(--background-secondary);
+    padding: 0.1em 0.3em;
+    border-radius: 0;
+    border: none;
+    box-shadow: 0 0 0 1px var(--background-modifier-border);
+}
+
+/* ===== HORIZONTAL RULE ===== */
+
+.markdown-preview-view hr {
+    border: none;
+    height: 1px;
+    background-color: var(--background-modifier-border);
+    margin: 2em 0;
+    position: relative;
+}
+
+.markdown-preview-view hr::after {
+    content: "❧";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-primary);
+    padding: 0 1em;
+    color: var(--text-muted);
+    font-size: 1em;
+}
+
+/* ===== METADATA AND PROPERTIES ===== */
+
+/* Properties container */
+.metadata-container {
+    background-color: var(--background-secondary);
+    border: none;
+    border-radius: 0;
+    margin-bottom: 2em;
+    padding: 1em;
+    font-family: var(--font-text-theme);
+}
+
+.metadata-properties-heading {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-bottom: 0.5em;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+.metadata-properties {
+    font-size: 0.9em;
+}
+
+.metadata-property-key {
+    color: var(--interactive-accent);
+    font-weight: normal;
+}
+
+.metadata-property-value {
+    color: var(--text-normal);
+}
+
+/* Add property button */
+.metadata-add-button {
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.metadata-add-button:hover {
+    color: var(--interactive-accent);
+}
+
+/* ===== INLINE TITLE ===== */
+
+.inline-title {
+    font-family: var(--font-text-theme);
+    font-size: 2.2em;
+    font-weight: normal;
+    color: var(--text-normal);
+    margin-bottom: 1em;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* ===== COLLAPSE INDICATORS ===== */
+
+.collapse-indicator {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.collapse-indicator:hover {
+    color: var(--interactive-accent);
+    opacity: 1;
+}
+
+.collapse-icon svg {
+    width: 0.9em;
+    height: 0.9em;
+}
+
+/* ===== EDITOR SPECIFIC STYLING ===== */
+
+/* List indentation in editor */
+.cm-hmd-list-indent {
+    display: inline-block;
+}
+
+/* List bullets in editor */
+.list-bullet {
+    color: var(--interactive-accent);
+    opacity: 0.8;
+}
+
+/* List numbers in editor */
+.list-number {
+    color: var(--interactive-accent);
+    opacity: 0.8;
+}
+
+/* Heading indicators in editor */
+.HyperMD-header .cm-header {
+    font-family: var(--font-text-theme);
+    font-weight: normal;
+    color: var(--text-normal);
+}
+
+/* Fold indicators */
+.cm-fold-indicator {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.cm-fold-indicator:hover {
+    color: var(--interactive-accent);
+    opacity: 1;
+}
+
+/* Code block flair */
+.code-block-flair {
+    background-color: var(--background-secondary-alt);
+    color: var(--text-muted);
+    font-family: var(--font-text-theme);
+    font-size: 0.7em;
+    padding: 0.2em 0.6em;
+    border-radius: 0;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Indent spacing */
+.cm-indent-spacing {
+    display: inline-block;
+    width: 1.5em;
+}
+
