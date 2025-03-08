@@ -2,7 +2,11 @@
 
 A theme that transforms your Obsidian experience into a Kindle-like reading environment, optimized for comfortable long-form reading and note-taking.
 
-![Kindle Theme Screenshot](https://github.com/justmalhar/obsidian-kindle-theme/raw/main/screenshot.png)
+## Demo
+
+![Dark Theme](/demo/Kindle%20Theme%20Dark.png)
+
+![Light Theme](/demo/Kindle%20Theme%20Light.png)
 
 ## Features
 
